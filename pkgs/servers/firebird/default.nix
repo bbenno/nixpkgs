@@ -82,5 +82,18 @@ let base = {
     buildInputs = base.buildInputs ++ [ zlib unzip libtommath libtomcrypt ];
   });
 
+  firebird_5 = stdenv.mkDerivation (base // rec {
+    version = "5.0.1";
+
+    src = fetchFromGitHub {
+      owner = "FirebirdSQL";
+      repo = "firebird";
+      rev = "v${version}";
+      hash = "sha256-6hjR4izBtHZ7G0fuy6hNF24O2KYRMAOosfA8sYVbDms=";
+    };
+
+    buildInputs = base.buildInputs ++ [ ];
+  });
+
   firebird = firebird_4;
 }
