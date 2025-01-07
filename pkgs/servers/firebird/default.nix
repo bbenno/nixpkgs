@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchFromGitHub, libedit, autoreconfHook271, zlib, unzip, libtommath, libtomcrypt, icu, superServer ? false }:
+{ lib, stdenv, fetchFromGitHub, libedit, autoreconfHook271, zlib, unzip, libtommath, libtomcrypt, icu, cmake, superServer ? false }:
 
 let base = {
   pname = "firebird";
@@ -39,7 +39,7 @@ let base = {
       owner = "FirebirdSQL";
       repo = "firebird";
       rev = "R${builtins.replaceStrings [ "." ] [ "_" ] version}";
-      sha256 = "sha256-YyvlMeBux80OpVhsCv+6IVxKXFRsgdr+1siupMR13JM=";
+      hash = "sha256-YyvlMeBux80OpVhsCv+6IVxKXFRsgdr+1siupMR13JM=";
     };
 
     configureFlags = base.configureFlags ++ [ "--with-system-icu" ];
@@ -92,7 +92,7 @@ let base = {
       hash = "sha256-6hjR4izBtHZ7G0fuy6hNF24O2KYRMAOosfA8sYVbDms=";
     };
 
-    buildInputs = base.buildInputs ++ [ ];
+    buildInputs = base.buildInputs ++ [ zlib libtommath libtomcrypt cmake ];
   });
 
   firebird = firebird_4;
