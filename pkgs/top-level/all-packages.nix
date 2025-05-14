@@ -3198,8 +3198,6 @@ with pkgs;
 
   grails = callPackage ../development/web/grails { jdk = null; };
 
-  graylog-6_0 = callPackage ../tools/misc/graylog/6.0.nix { };
-
   inherit
     ({
       graylog-6_1 = callPackage ../tools/misc/graylog/6.1.nix { };
@@ -3208,7 +3206,7 @@ with pkgs;
     ;
 
   graylogPlugins = recurseIntoAttrs (
-    callPackage ../tools/misc/graylog/plugins.nix { graylogPackage = graylog-6_0; }
+    callPackage ../tools/misc/graylog/plugins.nix { graylogPackage = graylog-6_1; }
   );
 
   graphviz = callPackage ../tools/graphics/graphviz { };
