@@ -39,7 +39,7 @@ in
       enable = lib.mkEnableOption "Graylog, a log management solution";
 
       package = lib.mkPackageOption pkgs "graylog" {
-        example = "graylog-6_0";
+        example = "graylog-6_1";
       };
 
       user = lib.mkOption {
@@ -136,10 +136,13 @@ in
     services.graylog.package =
       let
         mkThrow = ver: throw "graylog-${ver} was removed, please upgrade your graylog version.";
+        atLeast = ver: lib.versionAtLeast config.system.stateVersion ver;
         base =
-          if lib.versionAtLeast config.system.stateVersion "25.05" then
-            pkgs.graylog-6_0
-          else if lib.versionAtLeast config.system.stateVersion "23.05" then
+          if atLeast "25.11" then
+            pkgs.graylog-6_1
+          else if atLeast "25.05" then
+            mkThrow "6_0"
+          else if atLeast "23.05" then
             mkThrow "5_1"
           else
             mkThrow "3_3";
