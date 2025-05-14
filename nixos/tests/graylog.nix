@@ -19,6 +19,8 @@ import ./make-test-python.nix (
 
         services.graylog = {
           enable = true;
+          TODO: replace ES with OpenSearch in the test
+          package = pkgs.graylog-6_2;
           passwordSecret = "YGhZ59wXMrYOojx5xdgEpBpDw2N6FbhM4lTtaJ1KPxxmKrUvSlDbtWArwAWMQ5LKx1ojHEVrQrBMVRdXbRyZLqffoUzHfssc";
           elasticsearchHosts = [ "http://localhost:9200" ];
 
