@@ -10246,6 +10246,7 @@ with pkgs;
     firebird_3
     firebird
     ;
+  firebird_5 = callPackage ../servers/firebird/5.nix { };
 
   freshrss = callPackage ../servers/web-apps/freshrss { };
   freshrss-extensions = recurseIntoAttrs (callPackage ../servers/web-apps/freshrss/extensions { });
