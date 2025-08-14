@@ -11,6 +11,7 @@
   writableTmpDirAsHomeHook,
   versionCheckHook,
   nix-update-script,
+  withWeb ? true,
 }:
 
 rustPlatform.buildRustPackage (finalAttrs: {
@@ -56,6 +57,12 @@ rustPlatform.buildRustPackage (finalAttrs: {
   ];
   versionCheckProgramArg = "--version";
   doInstallCheck = true;
+
+  buildNoDefaultFeatures = !withWeb;
+  buildFeatures = lib.optionals (!withWeb) [
+    "plugins_from_target"
+    "vendored_curl"
+  ];
 
   # Ensure that we don't vendor curl, but instead link against the libcurl from nixpkgs
   installCheckPhase = lib.optionalString (stdenv.hostPlatform.libc == "glibc") ''
