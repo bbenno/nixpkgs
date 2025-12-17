@@ -36,8 +36,8 @@ buildPythonPackage rec {
   ];
 
   dependencies = [
-    "dictlib"
-    "oic"
+    dictlib
+    oic
   ];
 
   pythonImportsCheck = [
