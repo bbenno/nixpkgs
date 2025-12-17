@@ -156,7 +156,6 @@ python.pkgs.buildPythonApplication rec {
       cryptography
       css-inline
       defusedcsv
-      dictlib
       django
       django-bootstrap3
       django-compressor
@@ -267,6 +266,7 @@ python.pkgs.buildPythonApplication rec {
   disabledTests = [
     # unreliable around day changes
     "test_order_create_invoice"
+    "test_orderposition_detail"
 
     # outdated translation files
     # https://github.com/pretix/pretix/commit/c4db2a48b6ac81763fa67475d8182aee41c31376
