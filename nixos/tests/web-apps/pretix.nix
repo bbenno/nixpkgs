@@ -16,6 +16,7 @@
       enable = true;
       nginx.domain = "tickets.local";
       plugins = with pkgs.pretix.plugins; [
+        oidc
         passbook
         pages
         zugferd

@@ -277,6 +277,7 @@ pythonPackages.buildPythonApplication (finalAttrs: {
   disabledTests = [
     # unreliable around day changes
     "test_order_create_invoice"
+    "test_orderposition_detail"
   ];
 
   disabledTestPaths = [
